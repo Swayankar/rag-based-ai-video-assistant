@@ -8,7 +8,7 @@ SARVAM_PIECE_SECONDS = 25
 WHISPER_MODEL = os.getenv("WHISPER_MODEL", "base")
 
 SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
-SARVAM_STT_TRANSLATE_URL = "https://api.sarvam.ai/v1/speech-to-text-translate"
+SARVAM_STT_TRANSLATE_URL = "https://api.sarvam.ai/speech-to-text-translate"
 SARVAM_MODEL = os.getenv("SARVAM_STT_MODEL", "saaras:v3")
 
 _model = None
