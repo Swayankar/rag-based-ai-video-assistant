@@ -1,3 +1,12 @@
+---
+title: AI Video Assistant Agent
+emoji: 🎬
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # 🎬 AI Video Assistant Agent With RAG
 
 Turn videos, audio recordings, or YouTube links into structured meeting notes, action items, decisions, open questions, downloadable reports, and a transcript-grounded chat assistant.
