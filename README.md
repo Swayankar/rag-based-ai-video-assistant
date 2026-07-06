@@ -78,6 +78,30 @@ This project combines a **FastAPI backend**, a **React + Vite frontend**, local/
 └── Dockerfile
 ```
 
+## 🏗️ Architecture
+
+```
+User Upload / YouTube URL
+            │
+            ▼
+     Audio Extraction (FFmpeg)
+            │
+            ▼
+ Whisper / Sarvam Transcription
+            │
+            ▼
+ Mistral AI Summarization & Extraction
+            │
+            ▼
+ Transcript → ChromaDB
+            │
+            ▼
+      RAG-powered Chat
+            │
+            ▼
+      PDF / DOCX Export
+```
+
 ## 🔐 Environment Variables
 
 Create a `.env` file in the project root:
@@ -159,7 +183,7 @@ The Vite dev server proxies `/api` requests to `http://localhost:8000`.
 You can also run the pipeline from the terminal:
 
 ```bash
-python main..py
+python main.py
 ```
 
 You will be prompted for:
@@ -198,13 +222,18 @@ There is a `Dockerfile` included for the backend image:
 
 ```bash
 docker build -t ai-video-assistant .
-docker run --env-file .env -p 8000:8000 ai-video-assistant
 ```
 
-Current caveat: the Dockerfile contains this line:
+Run the container:
 
-```dockerfile
-COPY requirements.txt ./
+```bash
+docker run --env-file .env -p 7860:7860 ai-video-assistant
+```
+
+The API will be available at:
+
+```text
+http://localhost:7860
 ```
 
 ## 🛠️ Troubleshooting

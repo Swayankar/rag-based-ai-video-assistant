@@ -22,11 +22,21 @@ load_dotenv()
 
 app = FastAPI(title="AI Video Assistant API")
 
+# ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "http://127.0.0.1:5173",
+#     os.getenv("FRONTEND_ORIGIN", "*"),
+# ]
+
+frontend_origin = os.getenv("FRONTEND_ORIGIN")
+
 ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    os.getenv("FRONTEND_ORIGIN", "*"),
 ]
+
+if frontend_origin:
+    ALLOWED_ORIGINS.append(frontend_origin)
 
 app.add_middleware(
     CORSMiddleware,
