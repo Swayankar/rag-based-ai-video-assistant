@@ -5,6 +5,7 @@ Turn videos, audio recordings, or YouTube links into structured meeting notes, a
 This project combines a **FastAPI backend**, a **React + Vite frontend**, local/audio transcription tools, **Mistral AI** for reasoning, and **ChromaDB** for RAG-powered question answering.
 
 ## 🎥 Demo Videos
+**Note: The UI has been updated, so the demo video may not reflect the current interface.**
 
 - 📺 **[Demo 1 - Process a YouTube URL (English)](https://youtu.be/TImmOzzYG6I)**
 - 📺 **[Demo 2 - Process a YouTube URL (Hindi/Hinglish)](https://youtu.be/Ts86gAvU4oE)**

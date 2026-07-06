@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Disc3, RefreshCcw } from "lucide-react";
+import Working from "./components/Working.jsx";
 import UploadPanel from "./components/UploadPanel.jsx";
 import ProgressTracker from "./components/ProgressTracker.jsx";
 import ResultsView from "./components/ResultsView.jsx";
@@ -67,20 +68,23 @@ export default function App() {
         )}
       </header>
 
-      {/* Upload (hidden once a job exists) */}
+      {/* Landing explainer + Upload (hidden once a job exists) */}
       {!jobId && (
-        <motion.section
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <UploadPanel onSubmit={handleSubmit} disabled={submitting} />
+        <>
+          <Working />
+          <motion.section
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <UploadPanel onSubmit={handleSubmit} disabled={submitting} />
           {errorMsg && (
             <p className="mt-4 rounded-xl border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-danger">
               ⚠️ {errorMsg}
             </p>
           )}
-        </motion.section>
+          </motion.section>
+        </>
       )}
 
       {/* Progress */}
