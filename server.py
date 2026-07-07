@@ -22,6 +22,7 @@ from core.RAG_engine import build_rag_chain, ask_question
 import ssl
 import certifi
 import requests
+import traceback
 
 load_dotenv()
 
@@ -290,10 +291,6 @@ def download(job_id: str, fmt: str = "pdf"):
 
 # Temparary endpoints to check the HuggingFace issue
 
-import ssl
-import certifi
-import requests
-
 @app.get("/api/test")
 def test():
     r = requests.get("https://www.google.com", timeout=10)
@@ -301,8 +298,18 @@ def test():
 
 @app.get("/api/test-youtube")
 def test_youtube():
-    r = requests.get("https://www.youtube.com", timeout=10)
-    return {"status": r.status_code}
+    try:
+        r = requests.get("https://www.youtube.com", timeout=10)
+        return {
+            "status": r.status_code,
+            "headers": dict(r.headers),
+        }
+    except Exception as e:
+        return {
+            "error": type(e).__name__,
+            "message": str(e),
+            "traceback": traceback.format_exc(),
+        }
 
 @app.get("/api/debug")
 def debug():
