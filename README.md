@@ -15,11 +15,27 @@ Turn videos, audio recordings, or YouTube links into structured meeting notes, a
 This project combines a **FastAPI backend**, a **React + Vite frontend**, local/audio transcription tools, **Mistral AI** for reasoning, and **ChromaDB** for RAG-powered question answering.
 
 ## 🎥 Demo Videos
-**Note: The UI has been updated, so the demo video may not reflect the current interface.**
+> **Note: The UI has been updated, so the demo video may not reflect the current interface.**
 
 - 📺 **[Demo 1 - Process a YouTube URL (English)](https://youtu.be/TImmOzzYG6I)**
 - 📺 **[Demo 2 - Process a YouTube URL (Hindi/Hinglish)](https://youtu.be/Ts86gAvU4oE)**
 - 📺 **[Demo 3 - Upload a Local Audio/Video File](https://youtu.be/H6tMxXC5kV0)**
+
+## 🌐 Live Demo
+> **Note:** The frontend is hosted on **Vercel**, while the AI backend is deployed on **Hugging Face Spaces**.
+
+- **Frontend (Vercel):** [Open Web App](https://ai-video-assistant-x.vercel.app/)
+- **Backend API (Hugging Face Spaces):** [Open API](https://swayankar-ai-video-assistant.hf.space)
+
+**⚠️ Known Limitations**
+- YouTube URLs on Hugging Face Spaces
+      - ✅ Processing **local audio and video uploads** works as expected.
+      - ⚠️ Direct **YouTube URL processing** may fail on Hugging Face Spaces due to outbound TLS/network restrictions when connecting to YouTube.
+      - This is an infrastructure limitation of the hosting environment rather than an issue with the application itself.
+
+- For the best experience
+      - ✅ Upload local audio or video files.
+      - ✅ Or run the backend locally after configuring the required environment variables.
 
 ## ✨ Features
 
