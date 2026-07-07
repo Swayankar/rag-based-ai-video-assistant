@@ -18,6 +18,11 @@ from core.summarizer import summarize, generate_title
 from core.extractor import extract_action_items, extract_key_decisions, extract_questions
 from core.RAG_engine import build_rag_chain, ask_question
 
+# Temp imports
+import ssl
+import certifi
+import requests
+
 load_dotenv()
 
 app = FastAPI(title="AI Video Assistant API")
@@ -282,3 +287,29 @@ def download(job_id: str, fmt: str = "pdf"):
         )
 
     raise HTTPException(400, "fmt must be 'pdf' or 'docx'")
+
+# Temparary endpoints to check the HuggingFace issue
+
+import ssl
+import certifi
+import requests
+
+@app.get("/api/test")
+def test():
+    r = requests.get("https://www.google.com", timeout=10)
+    return {"status": r.status_code}
+
+@app.get("/api/test-youtube")
+def test_youtube():
+    r = requests.get("https://www.youtube.com", timeout=10)
+    return {"status": r.status_code}
+
+@app.get("/api/debug")
+def debug():
+    return {
+        "python": os.sys.version,
+        "openssl": ssl.OPENSSL_VERSION,
+        "requests": requests.__version__,
+        "certifi": certifi.__version__,
+        "ca_bundle": certifi.where(),
+    }
